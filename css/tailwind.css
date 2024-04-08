@@ -2,6 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
+p {
+  @apply text-black text-base leading-relaxed dark:text-gray-300 md:text-lg lg:leading-loose;
+}
+
+img {
+  @apply rounded-lg shadow-xl dark:shadow-none;
+}
+
+code {
+  @apply rounded-md dark:bg-zinc-700 dark:text-green-400;
+}
+
+ul,
+li {
+  @apply text-black text-base leading-relaxed dark:text-gray-300 md:text-lg lg:leading-loose;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.wave {
+  animation-name: wave-animation; /* Refers to the name of your @keyframes element below */
+  animation-duration: 2.5s; /* Change to speed up or slow down */
+  animation-iteration-count: infinite; /* Never stop waving :) */
+  transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
+  display: inline-block;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  } /* The following five values can be played with to make the waving more or less extreme */
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  } /* Reset for the last half to pause */
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 .task-list-item::before {
   @apply hidden;
 }
@@ -32,4 +97,46 @@ input:-webkit-autofill:focus {
 
 .katex-display {
   overflow: auto hidden;
+}
+
+.animation-hover:after {
+  background: none repeat scroll 0 0 transparent;
+  content: '';
+  height: 2px;
+  transition:
+    width 0.3s ease 0s,
+    left 0.3s ease 0s;
+  @apply absolute bottom-0 left-1/2 block w-0 bg-orange-500;
+}
+.animation-active:after {
+  @apply left-0 w-full;
+}
+.animation-hover:hover:after {
+  @apply left-0 w-full;
+}
+
+li.custom-list:before {
+  content: '\2022'; /* bullet point, for screen readers */
+  text-indent: -9999999px; /* move the bullet point out of sight */
+
+  width: 0.4em;
+  height: 1em;
+  background-repeat: no-repeat;
+
+  background-size: 0.4em 0.7em;
+  background-position: 0 0.3em;
+  font-size: 300%;
+  top: -0.35em;
+  @apply absolute block;
+}
+li.circle-check:before {
+  background-image: url('/static/icons/checklist.svg');
+  left: -0.7em;
+  top: -0.4em;
+}
+li.check:before {
+  left: -0.5em;
+  background-image: url('/static/icons/jam_check.svg');
+  top: -0.5em;
+  font-size: 400%;
 }
