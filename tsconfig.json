@@ -21,6 +21,7 @@
       "@/data/*": ["data/*"],
       "@/layouts/*": ["layouts/*"],
       "@/css/*": ["css/*"],
+      "@/utils/*": ["utils/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "plugins": [
@@ -33,13 +34,13 @@
   "include": [
     "next-env.d.ts",
     "**/*.js",
+    "**/*.jsx",
     "**/*.mjs",
     "**/*.ts",
     "**/*.tsx",
     "**/*.json",
     ".contentlayer/generated",
     ".contentlayer/generated/**/*.json",
-    ".next/types/**/*.ts"
-  ],
+    ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
