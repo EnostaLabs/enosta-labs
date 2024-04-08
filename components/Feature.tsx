@@ -36,14 +36,14 @@ const Feature = () => {
             className="ml-auto flex w-full flex-col justify-center"
             variants={scrollAnimation}
           >
-            <h3 className="text-3xl font-medium leading-relaxed text-black-600 lg:text-4xl">
+            <h3 className="text-black-600 text-3xl font-medium leading-relaxed lg:text-4xl">
               Stay Ahead of AI Technology
             </h3>
-            <p className="my-2 text-black-500">
+            <p className="text-black-500 my-2">
               Unlock the power of machine learning (ML), deep learning (DL) and leverage AI to
               address your organization’s unique challenges
             </p>
-            <ul className="ml-8 list-inside self-start text-black-500">
+            <ul className="text-black-500 ml-8 list-inside self-start">
               {features.map((feature, index) => (
                 <motion.li
                   className="circle-check custom-list relative"

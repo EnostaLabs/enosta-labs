@@ -19,7 +19,7 @@ const Card = ({ title, description, imgSrc, href, techStack }) => {
 
   return (
     <a href={href} className="max-w-lg">
-      <div className="hover:border-black hover:dark:border-white/90 flex h-full flex-col overflow-hidden rounded-xl border-2 border-zinc-300 p-[6px] dark:border-zinc-700">
+      <div className="flex h-full flex-col overflow-hidden rounded-xl border-2 border-zinc-300 p-[6px] hover:border-black dark:border-zinc-700 hover:dark:border-white/90">
         {imgSrc && (
           <div className="flex-shrink-0 object-none">
             <Image
@@ -38,7 +38,7 @@ const Card = ({ title, description, imgSrc, href, techStack }) => {
               return (
                 <div
                   key={t}
-                  className="text-black border-black bg-white flex items-center justify-center gap-2 rounded-md border p-1 px-2 text-sm font-bold md:text-base"
+                  className="flex items-center justify-center gap-2 rounded-md border border-black bg-white p-1 px-2 text-sm font-bold text-black md:text-base"
                 >
                   {t}
                   <div>
