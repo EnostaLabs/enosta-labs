@@ -1,7 +1,5 @@
 import NextImage, { ImageProps } from 'next/image'
 
-function Image({ ...rest }: ImageProps) {
-  return <NextImage {...rest} />
-}
+const Image = ({ ...rest }: ImageProps) => <NextImage {...rest} />
 
 export default Image
