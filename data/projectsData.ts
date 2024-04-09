@@ -31,6 +31,13 @@ const projectsData: ProjectDataProps[] = [
     href: 'https://multi-gpt.vercel.app/',
     techStack: ['React', 'JavaScript'],
   },
+  {
+    title: 'Click-Prompt',
+    description: 'A simple tool to generate prompt for ChatGPT.',
+    imgSrc: '/projects/click-prompt.png',
+    href: 'https://click-prompt-gray.vercel.app/',
+    techStack: ['NextJS', 'JavaScript'],
+  },
 ]
 
 export default projectsData
