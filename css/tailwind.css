@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 p {
-  @apply text-black text-base leading-relaxed dark:text-gray-300 md:text-lg lg:leading-loose;
+  @apply text-base leading-relaxed text-black dark:text-gray-300 md:text-lg lg:leading-loose;
 }
 
 img {
@@ -16,7 +16,7 @@ code {
 
 ul,
 li {
-  @apply text-black text-base leading-relaxed dark:text-gray-300 md:text-lg lg:leading-loose;
+  @apply text-base leading-relaxed text-black dark:text-gray-300 md:text-lg lg:leading-loose;
 }
 
 ::-webkit-scrollbar {
@@ -132,7 +132,7 @@ li.custom-list:before {
 li.circle-check:before {
   background-image: url('/static/icons/checklist.svg');
   left: -0.7em;
-  top: -0.4em;
+  top: -0.3em;
 }
 li.check:before {
   left: -0.5em;

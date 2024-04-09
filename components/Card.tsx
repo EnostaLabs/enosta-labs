@@ -54,7 +54,7 @@ const Card = ({ title, description, imgSrc, href, techStack }) => {
           <p className="prose max-w-none text-gray-500 dark:text-gray-400">{description}</p>
           <Link
             href={href}
-            className="mt-auto text-base font-medium leading-6 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+            className="text-base font-medium text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
             aria-label={`Link to ${title}`}
           >
             Learn more &rarr;

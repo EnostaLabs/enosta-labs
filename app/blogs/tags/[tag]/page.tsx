@@ -4,7 +4,6 @@ import siteMetadata from '@/data/siteMetadata'
 import ListLayout from '@/layouts/ListLayoutWithTags'
 import { allBlogs } from 'contentlayer/generated'
 import tagDataBlog from 'app/tag-data-blog.json'
-import tagDataTutorial from 'app/tag-data-tutorial.json'
 
 import { genPageMetadata } from 'app/seo'
 import { Metadata } from 'next'

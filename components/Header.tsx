@@ -6,7 +6,14 @@ import Link from './Link'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from '@nextui-org/react'
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  Button,
+  DropdownSection,
+} from '@nextui-org/react'
 import { useState } from 'react'
 
 const Header = () => {
@@ -30,14 +37,17 @@ const Header = () => {
         </Link>
       </div>
       <div className="flex items-center space-x-4 leading-5 sm:space-x-6">
-        <div>
-          <Dropdown isOpen={isOpen}>
+        <div className="hidden sm:block">
+          <Dropdown>
             <DropdownTrigger>
               <Button
                 className="inline-flex flex-row justify-center gap-x-1.5 font-medium text-gray-900 dark:text-gray-100"
                 variant="bordered"
                 onMouseEnter={() => {
                   setIsOpen(true)
+                }}
+                onMouseLeave={() => {
+                  setIsOpen(false)
                 }}
               >
                 Resources
@@ -57,21 +67,27 @@ const Header = () => {
             </DropdownTrigger>
             <DropdownMenu
               aria-label="Link Actions"
+              onMouseEnter={() => {
+                setIsOpen(true)
+              }}
               onMouseLeave={() => {
                 setIsOpen(false)
               }}
+              className="rounded-lg border-2 bg-white shadow-lg"
             >
-              <DropdownItem>
-                <Link key="Knowledge Update" href="/blogs">
-                  Knowledge Update
-                </Link>
-              </DropdownItem>
-              <DropdownItem>Research</DropdownItem>
-              <DropdownItem>
-                <Link key="Tutorials" href="/tutorials">
-                  Tutorials
-                </Link>
-              </DropdownItem>
+              <DropdownSection>
+                <DropdownItem>
+                  <Link key="Knowledge Update" href="/blogs">
+                    Knowledge Update
+                  </Link>
+                </DropdownItem>
+                <DropdownItem>Research</DropdownItem>
+                <DropdownItem>
+                  <Link key="Tutorials" href="/tutorials">
+                    Tutorials
+                  </Link>
+                </DropdownItem>
+              </DropdownSection>
             </DropdownMenu>
           </Dropdown>
         </div>
