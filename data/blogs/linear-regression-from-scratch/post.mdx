@@ -1,13 +1,16 @@
 ---
 title: 'Linear Regression: A Mathematical and Practical Guide with NumPy'
 summary: 'Learn about the mathematical concepts behind linear regression and how to implement them using NumPy in Python.'
-date: '2024-01-15'
+date: '2024-04-07'
 draft: false
 images: 
     - /blogs/linear-regression-from-scratch/linear-reg-scratch.png
     - /blogs/linear-regression-from-scratch/linear-reg-scratch-dark.png
 tags: 
     - Machine Learning
+    - Linear Regression
+authors:
+    - Nguyet Pham
 ---
 
 ## What is Linear Regression?
@@ -70,7 +73,7 @@ h_{\theta}(x) = \theta_{0} + \theta_{1}x
 ```
 it's same as the one we discussed earlier in this post.
 
-Here, `\theta_{0}{:eq}` is intercept and `\theta_{1}{:eq}` is the slope of the line
+Here, $$\theta_{0}$$ is intercept and $$\theta_{1}$$ is the slope of the line
 
 ### Cost Function
 
@@ -99,7 +102,7 @@ for mathematical convenience, we multiply the above equation with $$\frac{1}{2}$
 
 ### Gradient Descent
 
-We use gradient descent to update the parameters `\theta_{0}{:eq}` and `\theta_{1}{:eq}` to minimize the cost function:
+We use gradient descent to update the parameters $$\theta_{0}$$ and $$\theta_{1}$$ to minimize the cost function:
 
 ```math
 \theta_{0} := \theta_{0} - \alpha \frac{1}{m} \sum_{1=0}^{m} (h_{\theta}(x^i) - y^i)
@@ -110,7 +113,7 @@ We use gradient descent to update the parameters `\theta_{0}{:eq}` and `\theta_{
 ```
 
 We repeat this process until the cost converges to a minimum.  
-Once we have the optimized parameters `\theta_{0}{:eq}` and `\theta_{1}{:eq}`, we can use the hypothesis function to make predictions for new values.
+Once we have the optimized parameters $$\theta_{0}$$ and $$\theta_{1}$$, we can use the hypothesis function to make predictions for new values.
 
 Let's implement this using Python from scratch.
 
@@ -291,5 +294,3 @@ R-squared (R2): 0.3757346321460251
 ```
 
 as we see, the error metrics are almost close to each other.
-
-> In the next post we will discuss about the polynomial regression and how it's different from Linear Regression.
