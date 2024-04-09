@@ -1,0 +1,348 @@
+---
+title: 'Build Your First AI Voice Chatbot from Scratch with OpenAI (Whisper, GPT-4, TTS), Flask & ReactJS'
+date: '2024-04-01'
+tags: 
+  - Generative AI
+  - OpenAI
+  - Chatbot
+draft: false
+summary: ''    
+images:
+  - /tutorials/ai-voice-chatbot/thumbnail.jpg
+---
+
+I'm jumping on the bandwagon of AI Voice Chatbots. They will be huge for many reasons:
+- Speaking is easier than typing.
+- Listening is easier than reading.
+- People are moving from typing to speaking.
+-	Typing on mobile devices is time-consuming.
+
+For smartphones, voice assistants will be the default choice! So I decided to build my first full-stack application to be used purely with voice. To build it, I chose the package of OpenAI models:
+1.	Whisper (speech-to-text). Used to transcribe my voice into text.
+2.	GPT-4 or GPT-3.5(Large Language Models). Responses to the transcript from Whisper.
+3.	TTS (text-to-speech). It synthesizes the GPT-4 response into audio, such as mp3.
+
+And because my app is working now, I'm here to teach you how you can do the same. We'll use the following technologies:
+1.	Flask for the back-end part.
+2.	ReactJS for the front-end part.
+3.	WebSocket for the 2-way communication.
+So you'll learn how to build robust full-stack applications using ReactJS and Flask (not just Streamlit or Gradio)!
+
+> If you're not familiar with these technologies, do not worry. I will provide everything you need to build the app.
+Are you ready?
+Let's jump into the code!
+
+## Prerequisites
+To use OpenAI API, you need 2 things: the OpenAI API key and to install openai. Here is how.
+
+### Generate the OpenAI API Key and save to the .env file
+Go to <a href = "https://platform.openai.com/account/api-keys"> OpenAI's API Key Page </a> to generate a new API key.
+
+First, click on the `+ Create new secret key` button.
+
+![alt text](/tutorials/ai-voice-chatbot/create_api_key.png)
+
+Then, give it a name and press `Create secret key`.
+
+![alt text](/tutorials/ai-voice-chatbot/create_secret_key.png)
+
+Then, copy the generated key and paste it into the `.env` file we're about to create.
+
+The `.env` file is a simple and effective way to manage environment variables.
+
+Create a `.env` file in your main project directory and put your API key into it. Here's how it should look:
+
+```.env
+OPENAI_API_KEY=sk-11111111111111111111111
+```
+
+We'll use the key to authenticate with OpenAI's API.
+
+### Installing required packages
+
+To run the back-end application will need several Python libraries. You can install them by running this script in your console:
+
+```bash
+pip install Flask flask-cors flask-socketio python-dotenv openai
+```
+
+##  Back-end development with Flask
+
+###  Setting up the Flask app
+
+Let's start by setting up your Flask application.
+
+It involves initializing your app, setting a secret key for sessions, and enabling Cross-Origin Resource Sharing (CORS) to allow your front end to communicate with your back end.
+
+
+```python
+from flask import Flask
+from flask_cors import CORS
+from flask_socketio import SocketIO
+
+
+app = Flask(__name__)
+CORS(app)
+app.config["SECRET_KEY"] = "secret!"
+socketio = SocketIO(app, cors_allowed_origins="*")
+```
+
+Now, it's time to use OpenAI models.
+
+### Integrating with OpenAI API
+
+We've already installed openai so we're ready to use OpenAI API.
+Let's initialize the OpenAI client:
+
+```python
+from openai import OpenAI
+from dotenv import load_dotenv
+
+
+load_dotenv()
+client = OpenAI()
+```
+
+Now, we're good to start using OpenAI models.
+
+As I mentioned before, we'll use 3 models:
+1.	Whisper.
+2.	GPT-4.
+3.	TTS.
+
+Let's move to the first one.
+
+
+### Handling audio data and transcription
+
+We need an endpoint to handle incoming audio data.
+
+Here's the snippet for that:
+
+```python
+from flask_socketio import emit
+from io import BytesIO
+
+@socketio.on("audio_data")
+def handle_audio(data):
+    try:
+        audio_bytes_io = BytesIO(data)
+        file_tuple = ("audio.webm", audio_bytes_io, "audio/webm")
+        transcription = client.audio.transcriptions.create(model="whisper-1", file=file_tuple)
+        emit("transcription", {"text": transcription.text})
+        # Process the transcription to generate a response and synthesize a reply
+    except Exception as e:
+        print("An error occurred: ", str(e))
+```
+
+This code involves:
+-	Receiving the audio blob (which we'll create in the React part)
+-	Converting it to a format the OpenAI API can process
+-	Using the Whisper model for transcription
+
+### Generating and emitting text responses
+
+At this point, we have the transcribed text in the prompt variable. We want to pass it to our GPT-4 model like this:
+
+```python
+def get_response(prompt):
+    completion = client.chat.completions.create(
+        model="gpt-4-turbo",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant. Be extremely concise."},
+            {"role": "user", "content": prompt},
+        ],
+    )
+    response = completion.choices[0].message.content
+    return response
+```
+
+This is the standard call of OpenAI API when using Large Language Models.
+1.	We use `client.chat.completions.create()` to call our Large Language Model.
+2.	With `model="gpt-4-turbo"` we specify the model to use. Feel free to change it to `"gpt-3.5-turbo"` for lower costs and faster responses.
+3.	With `"role": "system", "content": "You are a helpful assistant. Be concise"`, we initialize the system role.
+4.	We pass `"role": "user", "content": prompt` to pass our query to the model.
+5.	In `completion.choices[0].message.content` we receive the response.
+
+### Synthesizing and serving audio
+
+The next step is to synthesize speech from the text response and serve it as an audio file. This involves using the `audio.speech.create` method and saving the output to a file that can be accessed by the front end.
+
+```python
+@app.route("/audio/<filename>")
+def serve_audio(filename):
+    return send_from_directory("static/audio", filename)
+
+def synthesize_audio(text, audio_filename):
+    audio = client.audio.speech.create(
+        model="tts-1",
+        voice="alloy",
+        input=text,
+    )
+    audio_url = os.path.join("static", "audio", audio_filename)
+    audio.stream_to_file(audio_url)
+    return audio_url
+```
+
+## Front-end development with ReactJS
+
+### Initializing the React app
+
+To keep this article slightly shorter, here are <a href="https://chat.openai.com/share/9135b44a-4224-4464-8770-d0024383ec24"> the necessary steps to run your first React app </a>.
+
+Then, you'll need to install some packages with:
+
+```bash
+npm install @emotion/react @emotion/styled @mui/icons-material @mui/material react-audio-voice-recorder socket.io socket.io-client
+```
+
+### Setting up the React app
+Begin by importing necessary React components from MaterialUI, which offers hundreds of pre-built graphic elements.
+
+```Javascript
+import React, { useEffect, useState } from 'react';
+import { useAudioRecorder } from 'react-audio-voice-recorder';
+import IconButton from '@mui/material/IconButton';
+import MicIcon from '@mui/icons-material/Mic';
+import StopIcon from '@mui/icons-material/Stop';
+```
+
+We will use the elements to:
+- Handle the UI for recording audio
+-	Display a button to start/stop recording
+-	Play the synthesized response
+
+### Recording audio and handling state
+Implement functionality to start and stop audio recording, using the useAudioRecorder hook for managing the recording state:
+
+```Javascript
+export default function App() {
+  const { startRecording, stopRecording, recordingBlob, isRecording } = useAudioRecorder();
+  const [audioUrl, setAudioUrl] = useState('');
+  // Add more functionalities and effects here
+} 
+```
+
+Additionally, we create a variable to keep the URL with the audio of the synthesized GPT-4 response.
+
+### Sending audio data and receiving responses
+
+After recording the audio, we send the audio blob to the back end.
+
+We'll use WebSocket (instead of HTTP requests) to keep the communication channel open all the time.
+
+It requires a lot of preparation:
+
+```Javascript
+import { io } from "socket.io-client";
+
+const host = 'http://localhost:5000/';
+const socket = io(host);
+
+export default function App() {
+  // use states from the previous step
+  useEffect(() => {
+    socket.on('connect', () => {
+      console.log('Connected to WebSocket server');
+    });
+  socket.on('transcription', (data) => {
+      console.log('Transcription:', data.text);
+      // Optionally update the UI to show the transcription
+    });
+    socket.on('response', (data) => {
+      console.log('Response Text:', data.text);
+      // Optionally update the UI to show the response text
+    });
+    socket.on('audio_url', (data) => {
+      setAudioUrl(host + data.url);
+      setAudioKey(Date.now()); // Update the key to force refresh the audio player
+      console.log('Received audio URL:', host + data.url);
+    });
+    return () => {
+      // Clean up the socket connections when the component unmounts
+      socket.off('connect');
+      socket.off('transcription');
+      socket.off('response');
+      socket.off('audio_url');
+    };
+  }, []);
+  useEffect(() => {
+    // Reset audioUrl when starting a new recording
+    if (isRecording) {
+      setAudioUrl('');
+    }
+  }, [isRecording]);
+  useEffect(() => {
+    // When a new recordingBlob is available, send it to the server
+    if (recordingBlob) {
+      console.log('Sending audio blob to the server', recordingBlob);
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const arrayBuffer = event.target.result;
+        socket.emit('audio_data', arrayBuffer);
+      };
+      reader.readAsArrayBuffer(recordingBlob);
+    }
+  }, [recordingBlob]);
+}
+```
+
+So we set up WebSocket listeners to receive:
+- Transcriptions
+- Text responses
+- URLs to the synthesized audio
+
+### Displaying the UI
+
+Finally, construct the UI for your application:
+
+```Javascript
+return (
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+    }}
+  >
+    <IconButton
+      sx={{ padding: '20px', fontSize: '40px', height: 'auto', width: 'auto' }}
+      color="primary"
+      onClick={isRecording ? handleStopRecording : startRecording}
+      aria-label={isRecording ? "Stop recording" : "Start recording"}
+    >
+      {isRecording ? <StopIcon sx={{ fontSize: '15rem' }} /> : <MicIcon sx={{ fontSize: '15rem' }} />}
+    </IconButton>
+    {audioUrl && <audio key={audioKey} src={audioUrl} controls autoPlay />}
+  </div>
+);
+```
+
+I made the UI as simple as I could. So it only has:
+1.	A button to start and stop recording
+2.	An audio player to play back the synthesized response.
+
+And that's it.
+
+We're ready to test!
+
+
+## Running the main app
+
+1. Starting the Flask back end
+```bash
+python app.py
+```
+It will run on http://localhost:5000
+
+2. Starting the React front-end project (ensure you’re in the front-end directory)
+
+```bash
+npm start
+```
+On http://localhost:3000 you should see the simplest app ever.
+
+Congrats! 
+
+You've learnt how to build a robust AI Full-stack Application!
