@@ -46,3 +46,6 @@ yarn-error.log*
 
 # Contentlayer
 .contentlayer
+
+app/tag-data-blog.json
+app/tag-data-tutorial.json

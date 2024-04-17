@@ -86,7 +86,9 @@ export default function PostMinimal({ content, authorDetails, next, prev, childr
             </div>
           </div>
 
-          <div className="prose max-w-none py-4 dark:prose-invert">{children}</div>
+          <div className="prose max-w-none py-4 text-justify dark:prose-invert prose-blockquote:border-red-600 prose-table:table-fixed prose-table:border prose-table:border-gray-400 prose-th:border prose-th:border-gray-400 prose-th:p-2 prose-th:text-left prose-td:border prose-td:border-gray-400 prose-td:p-2 prose-img:mx-auto">
+            {children}
+          </div>
           {siteMetadata.comments && (
             <div className="pb-6 pt-6 text-center text-gray-700 dark:text-gray-300" id="comment">
               <Comments slug={slug} />
