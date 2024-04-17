@@ -3,13 +3,13 @@ title: "Decision Trees: The Branching Path to Better Choices"
 summary: "See how trees work like flowcharts guiding the model in classifying the data!"
 date: '2024-04-09'
 images: 
-    - '/blogs/decision-tree-classifier/thumbnail.jpeg'
+    - '/blogs/decision-tree-classifier/thumbnail.png'
 authors:
     - Nguyet Pham
 tags: 
     - Machine Learning
     - Classification
-draft: false
+draft: true
 ---
 
 Assume that you’re a traveller planning your next weekend getaway and have two amazing options: A relaxing beach trip to Goa or a thrilling mountain adventure in Lonavala. But, how do you decide one way or the other? This is where Decision Trees come in. They are like flowcharts, visually representing all the scenarios. Let’s look deeper into this example.
@@ -19,8 +19,15 @@ Another decisive question could be if the person is fit for a trek or a hike.
 
 Let’s look at a visual representation of how a Decision Tree could help in this.
 
-![](/blogs/decision-tree-classifier/--light-flow1.png)
-![](/blogs/decision-tree-classifier/--dark-flow1.png)
+<img
+className="hidden dark:block"
+src="/blogs/decision-tree-classifier/--dark-flow1.png"
+alt="dark-mode-image"/>
+<img
+    className="mb-4 block dark:hidden"
+    src="/blogs/decision-tree-classifier/--light-flow1.png"
+    alt="light-mode-image"
+/>
 
 Shown above is a standard representation of a hypothetical situation but there’s a lot of math that goes into it. Ready for it? Let’s get right in!
 
@@ -87,7 +94,9 @@ The value with highest Information Gain is selected to be the root node or the n
 
 ### Working Example
 
-Now let’s look at how this works in practice. Consider the following dataset:
+Now let’s look at how this works in practice. We will predict whether a person will play football or not based on given weather conditions.
+
+Consider the following dataset:
 
 | Weather | Temperature | Humidity | Wind | Play Football |
 | --- | --- | --- | --- | --- |
@@ -105,6 +114,7 @@ Now let’s look at how this works in practice. Consider the following dataset:
 | Cloudy | Mild | High | Strong | Yes |
 | Cloudy | Hot | Normal | Weak | Yes |
 | Rainy | Mild | High | Strong | No |
+
 
 The Entropy of the entire dataset is:
 
@@ -185,7 +195,7 @@ IG(Humidity) = Entropy(Play Football) - \frac{7}{14} Entropy(High) - \frac{7}{14
 IG(Humidity) = 0.94 - \frac{7}{14} 0.98 - \frac{7}{14} 0.59 = 0.15
 ```
 
-- For wind:
+- For Wind:
     
     There are two unique values: Weak and Strong
     
@@ -218,7 +228,6 @@ Now that we have all the Information Gain Index, let’s analyze them.
 The highest Information Gain is to be selected as root node. In this case, it is Weather. Hence, the decision tree we get now is:
 
 ![](/blogs/decision-tree-classifier/--light-flow2.png)
-![](/blogs/decision-tree-classifier/--dark-flow2.png)
 
 Now let’s do the further processing for the “Sunny” Condition. Consider the following dataset:
 
@@ -314,7 +323,6 @@ From the dataset, we can clearly notice that when Humidity is high, football is 
 The resulting decision tree is as follows:
 
 ![](/blogs/decision-tree-classifier/--light-flow3.png)
-![](/blogs/decision-tree-classifier/--dark-flow3.png)
 
 Now let’s check the data for Rainy:
 
@@ -406,7 +414,6 @@ It can be seen that when Wind is Strong, football is not played and when it is W
 The resulting decision tree is as follows:
 
 ![](/blogs/decision-tree-classifier/--light-flow4.png)
-![](/blogs/decision-tree-classifier/--dark-flow4.png)
 
 Now let’s look at the data for cloudy weather!
 
@@ -422,7 +429,6 @@ We can see that all the labels are “Yes” in this data. Hence we can conclude
 The final decision tree constructed will be as follows:
 
 ![](/blogs/decision-tree-classifier/--light-flow5.png)
-![](/blogs/decision-tree-classifier/--dark-flow5.png)
 
 ## Decision Tree Classifier: Gini Index Method
 
@@ -471,12 +477,9 @@ Consider the following data:
     
 
 ```math
-Gini(Hot) = 1 - p(Yes)^2 - p(No)^2
+Gini(Hot) = 1 - p(Yes)^2 - p(No)^2 = 1 - (\frac{0}{2})^2 - (\frac{2}{2})^2 = 0
 ```
 
-```math
-Gini(Hot) = 1 - (\frac{0}{2})^2 - (\frac{2}{2})^2 = 0
-```
 
 ```math
 Gini(Mild) = 1 - (\frac{1}{2})^2 - (\frac{1}{2})^2 = 0.5
@@ -535,7 +538,6 @@ The lowest Gini Index is of Humidity. Therefore Humidity is selected as decision
 Therefore the tree that is formed is:
 
 ![](/blogs/decision-tree-classifier/--light-flow6.png)
-![](/blogs/decision-tree-classifier/--dark-flow6.png)
 
 ## Python Implementation of Decision Tree Classifier
 
@@ -583,4 +585,4 @@ It can be interpreted by this confusion matrix that all the predictions were acc
 
 This is all about the Decision Tree Classifier. If you have any questions regarding this, feel free to contact me.
 
-Up next, we have the Decision Tree Regressor where we train the Decision Tree Algorithm to work with continuous values. Stay Tuned!
+> Up next, we have the Decision Tree Regressor where we train the Decision Tree Algorithm to work with continuous values. Stay Tuned!

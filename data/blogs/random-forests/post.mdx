@@ -10,7 +10,7 @@ tags:
     - Machine Learning
     - Regression
     - Classification
-draft: false
+draft: true
 ---
 
 In the previous two posts, we talked about decision trees. The decision trees are very powerful but there is a drawback in them, it causes overfitting issue!
@@ -96,25 +96,53 @@ The next step is to build a Decision Tree.
 
 - Tree for Split 1:
 
-![](/blogs/random-forests/--light-tree_1.png)
-![](/blogs/random-forests/--dark-tree_1.png)
+<img
+className="mb-4 hidden dark:block"
+src="/blogs/random-forests/--dark-tree_1.png"
+alt="dark-mode-image"/>
+<img
+    className="mb-4 block dark:hidden"
+    src="/blogs/random-forests/--light-tree_1.png"
+    alt="light-mode-image"
+/>
 
 - Tree for Split 2:
 
-![](/blogs/random-forests/--light-tree_2.png)
-![](/blogs/random-forests/--dark-tree_2.png)
+<img
+className="mb-4 hidden dark:block"
+src="/blogs/random-forests/--dark-tree_2.png"
+alt="dark-mode-image"/>
+<img
+    className="mb-4 block dark:hidden"
+    src="/blogs/random-forests/--light-tree_2.png"
+    alt="light-mode-image"
+/>
 
 - Tree for Split 3:
 
-![](/blogs/random-forests/--light-tree_3.png)
-![](/blogs/random-forests/--dark-tree_3.png)
+<img
+className="mb-4 hidden dark:block"
+src="/blogs/random-forests/--dark-tree_3.png"
+alt="dark-mode-image"/>
+<img
+    className="mb-4 block dark:hidden"
+    src="/blogs/random-forests/--light-tree_3.png"
+    alt="light-mode-image"
+/>
 
 ### Formation of the Forest
 
 The forest would be a combination network of these trees. The whole data is given as input to the forest. The random forest divides the data into three splits and passes it on to trees. The formed Random Forest will be like this:
 
-![](/blogs/random-forests/--light-forest.png)
-![](/blogs/random-forests/--dark-forest.png)
+<img
+className="mb-4 hidden dark:block"
+src="/blogs/random-forests/--dark-forest.png"
+alt="dark-mode-image"/>
+<img
+    className="mb-4 block dark:hidden"
+    src="/blogs/random-forests/--light-forest.png"
+    alt="light-mode-image"
+/>
 
 ### Predicting the Results
 
@@ -135,8 +163,15 @@ Since the majority is with "Yes", the random forest concludes with "Yes" as the 
 
 This is how it is in the end:
 
-![](/blogs/random-forests/--light-forest-pred.png)
-![](/blogs/random-forests/--dark-forest-pred.png)
+<img
+className="mb-4 hidden dark:block"
+src="/blogs/random-forests/--dark-forest-pred.png"
+alt="dark-mode-image"/>
+<img
+className="mb-4 block dark:hidden"
+src="/blogs/random-forests/--light-forest-pred.png"
+alt="light-mode-image"
+/>
 
 ## Python Implementation
 
@@ -181,4 +216,4 @@ Testing Data Accuracy : 0.8
 
 As we can see, the model performed well. It gave an accuracy of 0.8 on unseen data.
 
-In the next post, we will discuss about the K-Nearest Neighbours Algorithm. Stay tuned!
+> In the next post, we will discuss about the K-Nearest Neighbours Algorithm. Stay tuned!
