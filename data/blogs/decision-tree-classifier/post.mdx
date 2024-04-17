@@ -9,7 +9,7 @@ authors:
 tags: 
     - Machine Learning
     - Classification
-draft: true
+draft: false
 ---
 
 Assume that you’re a traveller planning your next weekend getaway and have two amazing options: A relaxing beach trip to Goa or a thrilling mountain adventure in Lonavala. But, how do you decide one way or the other? This is where Decision Trees come in. They are like flowcharts, visually representing all the scenarios. Let’s look deeper into this example.
@@ -19,15 +19,7 @@ Another decisive question could be if the person is fit for a trek or a hike.
 
 Let’s look at a visual representation of how a Decision Tree could help in this.
 
-<img
-className="hidden dark:block"
-src="/blogs/decision-tree-classifier/--dark-flow1.png"
-alt="dark-mode-image"/>
-<img
-    className="mb-4 block dark:hidden"
-    src="/blogs/decision-tree-classifier/--light-flow1.png"
-    alt="light-mode-image"
-/>
+![](/blogs/decision-tree-classifier/--light-flow-1.png)
 
 Shown above is a standard representation of a hypothetical situation but there’s a lot of math that goes into it. Ready for it? Let’s get right in!
 
@@ -227,7 +219,7 @@ Now that we have all the Information Gain Index, let’s analyze them.
 
 The highest Information Gain is to be selected as root node. In this case, it is Weather. Hence, the decision tree we get now is:
 
-![](/blogs/decision-tree-classifier/--light-flow2.png)
+![](/blogs/decision-tree-classifier/--light-flow-2.png)
 
 Now let’s do the further processing for the “Sunny” Condition. Consider the following dataset:
 
@@ -322,7 +314,7 @@ From the dataset, we can clearly notice that when Humidity is high, football is 
 
 The resulting decision tree is as follows:
 
-![](/blogs/decision-tree-classifier/--light-flow3.png)
+![](/blogs/decision-tree-classifier/--light-flow-3.png)
 
 Now let’s check the data for Rainy:
 
@@ -413,7 +405,7 @@ It can be seen that when Wind is Strong, football is not played and when it is W
 
 The resulting decision tree is as follows:
 
-![](/blogs/decision-tree-classifier/--light-flow4.png)
+![](/blogs/decision-tree-classifier/--light-flow-4.png)
 
 Now let’s look at the data for cloudy weather!
 
@@ -537,7 +529,7 @@ The lowest Gini Index is of Humidity. Therefore Humidity is selected as decision
 
 Therefore the tree that is formed is:
 
-![](/blogs/decision-tree-classifier/--light-flow6.png)
+![](/blogs/decision-tree-classifier/--light-flow-6.png)
 
 ## Python Implementation of Decision Tree Classifier
 

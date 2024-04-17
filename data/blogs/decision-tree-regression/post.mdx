@@ -9,7 +9,7 @@ authors:
 tags: 
     - Machine Learning
     - Regression
-draft: true
+draft: false
 ---
 
 In our previous post, we dived into the world of Decision Tree Classification, uncovering its nuances and applications. Now, in this second part of our series, we're switching gears to explore Decision Tree Regression.
@@ -100,15 +100,7 @@ MSE_{right} = \frac{1}{8} \sum_{i=8}^{15} (Y_{i} - \bar{Y}_{right})^2
 In this case, we would choose the split with the lowest MSE, which is the split at $$X \leq 7$$ with $$MSE_{left}$$
 
 
-<img
-className="mb-4 hidden dark:block"
-src="/blogs/decision-tree-regression/--dark-flow-1.png"
-alt="dark-mode-image"/>
-<img
-    className="mb-4 block dark:hidden"
-    src="/blogs/decision-tree-regression/--light-flow-1.png"
-    alt="light-mode-image"
-/>
+![](/blogs/decision-tree-regression/--light-flow-1.png)
 
 
 ### 4. Predictions
@@ -127,15 +119,7 @@ Therefore, according to our decision tree model, for an unknown point with X = 9
 
 This prediction is based on the splits and mean values obtained from our decision tree model.
 
-<img
-className="mb-4 hidden dark:block"
-src="/blogs/decision-tree-regression/--dark-flow-2.png"
-alt="dark-mode-image"/>
-<img
-    className="mb-4 block dark:hidden"
-    src="/blogs/decision-tree-regression/--light-flow-2.png"
-    alt="light-mode-image"
-/>
+![](/blogs/decision-tree-regression/--light-flow-2.png)
 
 ## Python Implementation
 
@@ -167,15 +151,7 @@ When you run this code, it should output the predicted value of Y for the unknow
 
 if you look at the flow chart for this,
 
-<img
-className="mb-4 hidden dark:block"
-src="/blogs/decision-tree-regression/--dark-flow-3.png"
-alt="dark-mode-image"/>
-<img
-    className="mb-4 block dark:hidden"
-    src="/blogs/decision-tree-regression/--light-flow-3.png"
-    alt="light-mode-image"
-/>
+![](/blogs/decision-tree-regression/--light-flow-3.png)
 
 
 So this is all about Decision tree Regression in a nutshell. Meet you in the next post.
