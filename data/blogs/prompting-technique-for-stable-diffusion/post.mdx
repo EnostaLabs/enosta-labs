@@ -1,0 +1,133 @@
+---
+title: "Prompting Technique for Stable Diffusion"
+summary: "Generating pictures using Stable Diffusion in all cases would involve to submit a prompt to the pipeline. This is only one of the parameters, but the most important one. An incomplete or poorly constructed prompt would make the resulting image not as you would expect. In this post, you will learn some key techniques to construct a prompt and see how much a good prompt can create a good image."
+date: '2024-04-17'
+images:
+    - '/blogs/prompting-technique-for-stable-diffusion/thumbnail.png'
+authors:
+    - Nguyet Pham
+tags: 
+    - Prompt Engineerings
+    - Stable Diffusions
+    - Text-to-Image
+draft: false
+---
+
+
+## Parameters Affecting the Output
+
+Several parameters affect the output in Stable Diffusion. The model has a vast impact on the style of the drawing. The sampler and step count matters for the quality of the generation. But the prompt guides the content in the output.
+
+In theory, the diffusion model requires hundreds of steps to generate an image. But the diffusion model is, in fact, a mathematical model that can be written as a differential equation; there are ways to solve the equation approximately. The sampler and the step count together control how the approximate solution is to be found. Generally speaking, the more steps you use, the more accurate the result is. However, the effect of step count depends on the sampler chosen. As a ballpark, most samplers should use around 20 to 40 steps for the best balance between quality and speed.
+
+The prompt affects the output for a trivial reason. In every step, the U-net in Stable Diffusion will use the prompt to guide the refinement of noise into a picture. Different models understood the prompt differently, just as humans understand a word with different preconceptions. However, a general rule is that you should write the prompt in such a way that limits the room for reinterpretation. Let’s look into this with some examples.
+
+## Characteristics of an Effective Prompt
+
+A prompt should be specific and explicit in what needs to be in the picture. Having a list of keywords handy makes prompting a piece of cake. Let’s understand the different categories of keywords, and then we will look into examples in each category.
+
+### Subject or Object
+
+The core of a prompt lies in describing the details of the expected image. Therefore, it is important to imagine it first. Let’s understand this using a prompt example.
+
+`A couple watching sunset on the riverbank.`
+
+The various settings picked for generating the image are given below:
+
+- Model: v1-5-pruned-emaonly.safetensors
+- Sampling method: DPM++ 2M
+- Sampling steps: 20
+- CFG Scale: 7
+- Width × Height: 512 × 512
+- A negative prompt: Will explain in subsequent sections
+- Batch size and count: 1
+
+![](/blogs/prompting-technique-for-stable-diffusion/image.png)
+
+![](/blogs/prompting-technique-for-stable-diffusion/image-1.png)
+
+Not bad for a first attempt. Let's enhance this further.
+
+> **NOTE**: Image generation is a random process. Hence you may see a vastly different output. In fact, unless you fixed the random seed, the image you generate each time with the same prompt and parameters will be different.
+
+### Medium
+
+How is the image created? Whether the image is a photograph, a digital painting, a 3D rendering, or an oil painting is called the medium. Adding the medium of image creation makes the prompt even more specific.
+
+We can also add adjectives to it such as:
+
+- Ultra-realistic photograph
+- Portrait digital painting
+- Concept art
+- Underwater oil painting
+
+Let's add a medium to our prompt:
+
+`Concept art of a couple watching sunset on the riverbank.`
+
+![](/blogs/prompting-technique-for-stable-diffusion/image-2.png)
+
+### Resolution
+
+Adding resolution specifications such as highly detailed, HD, 4K, 8K, vray, unreal engine, or sharp focus helps get much more details in the image. Let’s try this out.
+
+`Concept art of a couple watching sunset on the riverbank, 4K, sharp focus.`
+
+![](/blogs/prompting-technique-for-stable-diffusion/image-3.png)
+
+You may have notice that the prompt doesn't need to be a sentence. You can also put in the keywords separated by comma. The embedding engine can understand it well.
+
+### Lighting
+
+Adding lighting keywords can enhance the look and feel of the scene. Examples include rim lighting, cinematic lighting, volumetric lighting, crepuscular rays, backlight, or dimly lit. So you can modify the prompt into:
+
+`Concept art of a couple watching sunset on the riverbank, 4K, sharp focus, rim lighting.`
+
+![](/blogs/prompting-technique-for-stable-diffusion/image-4.png)
+
+If you are not familiar with photography, rim lighting is to set up light behind the subject such that the rim of the subject will be outlined by the light.
+
+### Using Negative Prompts
+
+Rather than describing what should be in the image, the negative prompt is a way to describe what should not be present in the image. This can include attributes, objects, or styles. We can have a generic prompt like below for all our image-generation tasks. The good thing about negative prompt is that you can keep a standard template for negative prompt to reuse for many tasks. But some models (such as SD 2.0 or SD XL) are less dependent on the negative prompt.
+
+```
+(worst quality, low quality, normal quality, low-res, low details, oversaturated, undersaturated, overexposed, underexposed, grayscale, bw, bad photo, bad photography, bad art:1.4), (watermark, signature, text font, username, error, logo, words, letters, digits, autograph, trademark, name:1.2), (blur, blurry, grainy), morbid, ugly, asymmetrical, mutated malformed, mutilated, poorly lit, bad shadow, draft, cropped, out of frame, cut off, censored, jpeg artifacts, out of focus, glitch, duplicate, (airbrushed, cartoon, anime, semi-realistic, CGI, render, blender, digital art, manga, amateur:1.3), (3D,3D Game, 3D Game Scene, 3D Character:1.1), (bad hands, bad anatomy, bad body, bad face, bad teeth, bad arms, bad legs, deformities:1.3)
+```
+
+### Emphasizing Keywords
+
+We can let stable diffusion know if we are interested in emphasizing some keywords within the prompt and to what extent. This can be achieved using the below methods:
+
+#### Use of Factor
+We can modify a keyword’s weightage by using the syntax (keyword: factor). The factor is the numeric value. Let’s try this in our example.
+
+`Concept art of a couple watching sunset on the riverbank (under tree: 0.9), 4K, sharp focus, rim lighting.`
+
+![](/blogs/prompting-technique-for-stable-diffusion/image-5.png)
+
+Another way to add emphasis is the use of round brackets. It has the same effect as using a factor of 1.1. We can also use double or triple brackets for higher emphasis.
+
+- (keyword) is equivalent to (keyword: 1.1)
+- ((keyword)) is equivalent to (keyword: 1.21)
+- (((keyword))) is equivalent to (keyword: 1.33)
+
+Similarly, the effects of using multiple square brackets are:
+- [keyword] is equivalent to (keyword: 0.9)
+- [[keyword]] is equivalent to (keyword: 0.81)
+- [[[keyword]]] is equivalent to (keyword: 0.73)
+
+#### Keywords Blending
+
+As the name suggests keyword blending can help combine the effect of multiple subjects at once. Popular ways of keyword blending are below.
+
+- [keyword1 : keyword2: factor]
+- (keyword1: factor1), (keyword2: factor2)
+
+Let’s use the second format in our prompt.
+
+`Concept art of a couple watching sunset on the riverbank, (bird flying: 1), (under a tree: 0.9), 4K, sharp focus, rim lighting.`
+
+![](/blogs/prompting-technique-for-stable-diffusion/image-6.png)
+
+To summarize, there is a lot to experiment with when it comes to prompting a stable diffusion generator and expertise can only come with practice. So keep practicing!
