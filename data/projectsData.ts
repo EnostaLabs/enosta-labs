@@ -28,7 +28,7 @@ const projectsData: ProjectDataProps[] = [
     title: 'AI Content Generator',
     description: 'A simple tool for content generating powered by OpenAI GPT-4.',
     imgSrc: '/projects/ai-content-generator.png',
-    href: 'https://multi-gpt.vercel.app/',
+    href: 'https://enostalabs-ai-content-generator.vercel.app/',
     techStack: ['React', 'JavaScript'],
   },
   {
