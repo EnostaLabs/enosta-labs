@@ -1,7 +1,7 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
   title: 'Technical Blog',
-  author: 'Vu-Thu-Nguyet Pham',
+  author: 'EnostaLabs',
   headerTitle: 'EnostaLabs',
   description: 'A blog created with Next.js and Tailwind.css',
   language: 'en-us',
@@ -12,7 +12,7 @@ const siteMetadata = {
   socialBanner: '/static/images/twitter-card.png',
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'address@yoursite.com',
-  github: 'https://github.com',
+  github: 'https://github.com/EnostaLabs',
   twitter: 'https://twitter.com/Twitter',
   facebook: 'https://facebook.com',
   youtube: 'https://youtube.com',
