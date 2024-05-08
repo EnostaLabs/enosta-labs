@@ -140,3 +140,9 @@ li.check:before {
   top: -0.5em;
   font-size: 400%;
 }
+.main-logo {
+  border-radius: unset;
+  --tw-shadow: unset;
+  --tw-shadow-colored: unset;
+  --box-shadow: unset;
+}
