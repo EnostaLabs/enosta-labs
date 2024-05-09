@@ -38,6 +38,20 @@ const projectsData: ProjectDataProps[] = [
     href: 'https://click-prompt-gray.vercel.app/',
     techStack: ['NextJS', 'JavaScript'],
   },
+  {
+    title: 'Vietnamese ID Card OCR',
+    description: 'A simple tool to extract information from chip-based Vietnamese ID Card',
+    imgSrc: '/projects/id-card-ocr.png',
+    href: '',
+    techStack: ['Python', 'TensorFlow', 'NextJS'],
+  },
+  {
+    title: 'Stable Diffusion WebUI',
+    description: 'A simple tool to extract information from chip-based Vietnamese ID Card',
+    imgSrc: '/projects/stable-diffusion.png',
+    href: '',
+    techStack: ['Python', 'TensorFlow'],
+  },
 ]
 
 export default projectsData
