@@ -1,4 +1,4 @@
-import { TechStack } from '@/components/TechStack'
+import { TechStack } from './TechStack'
 
 export function PythonIcon() {
   return (

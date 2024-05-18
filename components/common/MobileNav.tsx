@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import Link from './Link'
+import Link from '@/components/containers/Link'
 import headerNavLinks from '@/data/headerNavLinks'
 import {
   Button,
