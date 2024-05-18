@@ -24,7 +24,7 @@ export default function Footer() {
           <Link href="/">{siteMetadata.title}</Link>
         </div>
         <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
-          <Link href="https://enosta.com/">EnostaLabs</Link>
+          <Link href="https://enosta.com/">Enosta Group</Link>
         </div>
       </div>
     </footer>
