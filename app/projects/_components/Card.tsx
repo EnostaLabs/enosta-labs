@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Image from './Image'
-import Link from './Link'
+import Image from '@/components/containers/Image'
+import Link from '@/components/containers/Link'
 import { DevIcons } from './DevIcons'
 
 const Card = ({ title, description, imgSrc, href, techStack }) => {

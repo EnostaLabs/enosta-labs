@@ -1,11 +1,11 @@
 'use client'
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
-
-import Link from './Link'
-import MobileNav from './MobileNav'
-import ThemeSwitch from './ThemeSwitch'
-import SearchButton from './SearchButton'
+import Logo from '@/data/logo.svg'
+import Link from '@/components/containers/Link'
+import MobileNav from '@/components/common/MobileNav'
+import ThemeSwitch from '@/components/common/ThemeSwitch'
+import SearchButton from '@/components/common/SearchButton'
 import {
   Dropdown,
   DropdownTrigger,
@@ -15,7 +15,6 @@ import {
   DropdownSection,
 } from '@nextui-org/react'
 import { useState } from 'react'
-import Image from './Image'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)

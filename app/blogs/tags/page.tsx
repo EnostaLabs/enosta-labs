@@ -1,4 +1,4 @@
-import Link from '@/components/Link'
+import Link from '@/components/containers/Link'
 import Tag from '@/components/Tag'
 import { slug } from 'github-slugger'
 import tagDataBlog from 'app/tag-data-blog.json'

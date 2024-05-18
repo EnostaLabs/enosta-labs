@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React, { useMemo } from 'react'
 import { motion } from 'framer-motion'
 import getScrollAnimation from '@/utils/getScrollAnimation'
-import ScrollAnimationWrapper from '@/components/ScrollAnimationWrapper'
+import ScrollAnimationWrapper from '@/components/motions/ScrollAnimationWrapper'
 
 const features = [
   'Discover & Elaborate',

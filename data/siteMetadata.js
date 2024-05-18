@@ -1,14 +1,13 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Technical Blog',
+  title: 'EnostaLabs',
   author: 'EnostaLabs',
   headerTitle: 'EnostaLabs',
-  description: 'A blog created with Next.js and Tailwind.css',
+  description: 'A go-to parter for emerging technology solutions.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://enostalabs.vercel.app',
   siteRepo: 'https://github.com/PhamVuThuNguyet',
-  siteLogo: '/static/images/logo.png',
   socialBanner: '/static/images/twitter-card.png',
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'address@yoursite.com',
