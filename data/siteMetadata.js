@@ -7,17 +7,9 @@ const siteMetadata = {
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://enostalabs.vercel.app',
-  siteRepo: 'https://github.com/PhamVuThuNguyet',
-  socialBanner: '/static/images/twitter-card.png',
-  mastodon: 'https://mastodon.social/@mastodonuser',
-  email: 'address@yoursite.com',
+  socialBanner: '/static/images/logo.png',
   github: 'https://github.com/EnostaLabs',
-  twitter: 'https://twitter.com/Twitter',
-  facebook: 'https://facebook.com',
-  youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com',
-  threads: 'https://www.threads.net',
-  instagram: 'https://www.instagram.com',
+  linkedin: 'https://vn.linkedin.com/company/enosta',
   locale: 'en-US',
   analytics: {
     // If you want to use an analytics provider you have to add it to the

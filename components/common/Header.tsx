@@ -1,7 +1,6 @@
 'use client'
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
-import Logo from '@/data/logo.svg'
 import Link from '@/components/containers/Link'
 import MobileNav from '@/components/common/MobileNav'
 import ThemeSwitch from '@/components/common/ThemeSwitch'
@@ -15,6 +14,7 @@ import {
   DropdownSection,
 } from '@nextui-org/react'
 import { useState } from 'react'
+import Image from '../containers/Image'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
