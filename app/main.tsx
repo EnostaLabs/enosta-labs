@@ -1,13 +1,11 @@
 'use client'
-import Feature from '@/components/landing/Feature'
 
-import Hero from '@/components/landing/Hero'
+import Landing from './landing/page'
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <Feature />
+      <Landing />
     </>
   )
 }
