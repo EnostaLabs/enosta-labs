@@ -1,111 +1,124 @@
-import Image from '@/components/containers/Image'
-import React, { useMemo } from 'react'
-import { motion } from 'framer-motion'
-import getScrollAnimation from '@/utils/getScrollAnimation'
+import React from 'react'
+
 import ScrollAnimationWrapper from '@/components/motions/ScrollAnimationWrapper'
 import ComputerVision from '../../../public/static/icons/computer_vision.svg'
 import NLP from '../../../public/static/icons/nlp.svg'
 import Speech from '../../../public/static/icons/speech.svg'
+import GenAI from '../../../public/static/icons/gen_ai.svg'
+import DataScience from '../../../public/static/icons/data_science.svg'
+import Blockchain from '../../../public/static/icons/blockchain.svg'
+import RPA from '../../../public/static/icons/rpa.svg'
+
 import MachineLearning from '../../../public/static/icons/machine_learning.svg'
-import { TwoColumnsContainer } from '@/components/styles/landing/_components/Expertise.styled'
+import { HeadingOne, HeadingTwo, TwoColumnsContainer } from '@/components/styles/layout.styled'
 
 const Expertise = () => {
-  const scrollAnimation = useMemo(() => getScrollAnimation(), [])
-
   return (
     <div
       className="mx-auto mb-6 mt-8 max-w-screen-xl px-6 sm:mb-14 sm:mt-14 sm:px-8 lg:px-12"
-      id="feature"
+      id="expertise"
     >
       <ScrollAnimationWrapper>
-        <motion.div
-          className="ml-auto flex w-full flex-col justify-center"
-          variants={scrollAnimation}
-        >
-          <h3 className="text-black-600 text-3xl font-medium leading-relaxed lg:text-4xl">
-            Our Areas of Expertise
-          </h3>
-          <p className="text-black-500 my-2">
-            We work on almost all areas of AI including modeling and representation, reasoning and
-            planning, machine learning and data science, computer vision and natural language
-            processing as well as learning theory.
-          </p>
-        </motion.div>
+        <HeadingOne>Our areas of expertise</HeadingOne>
+        <p className="my-2">
+          We work on almost all areas of AI/ML, Data Science, and Blockchain, including some
+          outstanding focuses as below.
+        </p>
       </ScrollAnimationWrapper>
       <TwoColumnsContainer>
         <ScrollAnimationWrapper>
-          <motion.div
-            className="ml-auto flex w-full flex-col justify-center"
-            variants={scrollAnimation}
-          >
-            <ComputerVision />
-            <h4 className="text-black-600 text-xl font-medium leading-relaxed lg:text-2xl">
-              Computer Vision
-            </h4>
-            <p className="text-black-500 my-2">
-              Computer vision enables computers to understand the real visual world. Research
-              directions:large-scale image classification, semantic segmentation, and captioning;
-              analysis, detection, tracking, recognition, 3D modeling and generation of human faces
-              and bodies; video content analysis, classification, summarization, captioning, search,
-              and recommendation, etc.
-            </p>
-          </motion.div>
+          <GenAI />
+          <HeadingTwo>Generative AI</HeadingTwo>
+          <p className="my-2">
+            Harness the power of AI to create entirely new content. By training models on vast
+            datasets of text, images, audio, and code, we can generate everything from original
+            writing and music to photorealistic landscapes and innovative sound effects, pushing the
+            boundaries of creative exploration and application across diverse fields.
+          </p>
         </ScrollAnimationWrapper>
         <ScrollAnimationWrapper>
-          <motion.div
-            className="ml-auto flex w-full flex-col justify-center"
-            variants={scrollAnimation}
-          >
-            <NLP />
-            <h4 className="text-black-600 text-xl font-medium leading-relaxed lg:text-2xl">
-              Natural Language Processing
-            </h4>
-            <p className="text-black-500 my-2">
-              Give computer systems the ability to interact with the outside world in a natural
-              language text format, track and study the cutting-edge natural language text
-              understanding and generation technology, incubate the next generation of natural
-              language processing technology and business application scenarios. Research
-              directions: text understanding, text generation, dialogue, and machine translation,
-              etc.
-            </p>
-          </motion.div>
+          <ComputerVision />
+          <HeadingTwo>Computer Vision</HeadingTwo>
+          <p className="my-2">
+            Empower machines to see and interpret the world around them. We delve into cutting-edge
+            research areas like large-scale image classification, semantic segmentation, and image
+            captioning. Additionally, we push the boundaries of object detection, tracking, and
+            recognition, even tackling the 3D modeling and generation of human forms. We extend our
+            vision to video as well, enabling intelligent analysis, classification, summarization,
+            captioning, search, and recommendation systems.
+          </p>
         </ScrollAnimationWrapper>
       </TwoColumnsContainer>
       <TwoColumnsContainer>
         <ScrollAnimationWrapper>
-          <motion.div
-            className="ml-auto flex w-full flex-col justify-center"
-            variants={scrollAnimation}
-          >
-            <Speech />
-            <h4 className="text-black-600 text-xl font-medium leading-relaxed lg:text-2xl">
-              Speech Processing
-            </h4>
-            <p className="text-black-500 my-2">
-              Devoted to better (spatial) audio capture, processing, and reproduction , enables
-              computers to communicate with humans in conversational speech. Research directions:
-              audio codec, far field signal processing with microphone array, speech separation and
-              enhancement, speaker recognition, speech recognition, speech/singing synthesis, voice
-              conversion/clone, etc.
-            </p>
-          </motion.div>
+          <NLP />
+          <HeadingTwo>Natural Language Processing</HeadingTwo>
+          <p className="my-2">
+            Bridge the gap between humans and machines through the power of language. We focus on
+            cutting-edge research in text understanding, generation, dialogue systems, and machine
+            translation. This allows us to develop next-generation NLP technologies with real-world
+            applications, empowering machines to interact naturally and fostering innovative
+            business solutions.
+          </p>
         </ScrollAnimationWrapper>
         <ScrollAnimationWrapper>
-          <motion.div
-            className="ml-auto flex w-full flex-col justify-center"
-            variants={scrollAnimation}
-          >
-            <MachineLearning />
-            <h4 className="text-black-600 text-xl font-medium leading-relaxed lg:text-2xl">
-              Machine Learning
-            </h4>
-            <p className="text-black-500 my-2">
-              Automatically analyze and learn rules from data, and use rules to make predictions on
-              unknown data. Research directions: machine learning theory, meta-learning, federated
-              learning, deep graph learning, generative learning, sequence learning, automated
-              machine learning, reinforcement learning, etc.
-            </p>
-          </motion.div>
+          <Speech />
+          <HeadingTwo>Speech Processing</HeadingTwo>
+          <p className="my-2">
+            Unlock the power of human conversation for machines. We tackle cutting-edge areas like
+            audio capture, processing, and reproduction, along with advanced algorithms for
+            far-field speech recognition and enhancement. This allows us to develop technologies for
+            machines to understand and respond in natural speech, including speaker identification,
+            speech synthesis, and even voice conversion.
+          </p>
+        </ScrollAnimationWrapper>
+      </TwoColumnsContainer>
+      <TwoColumnsContainer>
+        <ScrollAnimationWrapper>
+          <MachineLearning />
+          <HeadingTwo>Machine Learning</HeadingTwo>
+          <p className="my-2">
+            Empower machines to learn and adapt from data. We delve into a vast array of research
+            avenues, including core machine learning theory, meta-learning for faster adaptation,
+            and federated learning for secure collaboration. Additionally, we push the boundaries of
+            automated machine learning for streamlined model development and reinforcement learning
+            for intelligent decision-making.
+          </p>
+        </ScrollAnimationWrapper>
+        <ScrollAnimationWrapper>
+          <DataScience />
+          <HeadingTwo>Data Science</HeadingTwo>
+          <p className="my-2">
+            Unlock the secrets hidden within data. We combine powerful statistical methods, advanced
+            algorithms, and machine learning with deep domain expertise. This allows us to extract
+            meaningful insights from massive datasets, structured or unstructured. We explore a wide
+            range of applications, transforming data into knowledge for informed decision-making
+            across various fields.
+          </p>
+        </ScrollAnimationWrapper>
+      </TwoColumnsContainer>
+      <TwoColumnsContainer>
+        <ScrollAnimationWrapper>
+          <RPA />
+          <HeadingTwo>Robotic Process Automation</HeadingTwo>
+          <p className="my-2">
+            Streamline workflows and boosts efficiency through intelligent automation. We develop
+            software robots that mimic human actions, automating repetitive and rule-based tasks
+            across various applications. This frees up your human workforce to focus on higher-value
+            activities, leading to increased productivity, reduced errors, and improved cost
+            savings.
+          </p>
+        </ScrollAnimationWrapper>
+        <ScrollAnimationWrapper>
+          <Blockchain />
+          <HeadingTwo>Blockchain</HeadingTwo>
+          <p className="my-2">
+            Unlock the power of secure and transparent data collaboration. We explore the potential
+            of blockchain technology and distributed ledger systems to revolutionize data
+            management. Our research focuses on secure data sharing, tamper-proof record keeping,
+            and decentralized applications. This allows us to build trust and transparency across
+            networks, fostering innovative solutions for various industries.
+          </p>
         </ScrollAnimationWrapper>
       </TwoColumnsContainer>
     </div>
