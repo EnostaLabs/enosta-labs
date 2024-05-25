@@ -2838,6 +2838,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nextui-org/divider@npm:^2.0.27":
+  version: 2.0.27
+  resolution: "@nextui-org/divider@npm:2.0.27"
+  dependencies:
+    "@nextui-org/react-rsc-utils": 2.0.12
+    "@nextui-org/shared-utils": 2.0.5
+    "@nextui-org/system-rsc": 2.1.1
+    "@react-types/shared": ^3.22.1
+  peerDependencies:
+    "@nextui-org/theme": ">=2.1.0"
+    react: ">=18"
+    react-dom: ">=18"
+  checksum: 413dce638d4b98e43f08f53f74ab9868125c0b8ac0f9abcbd6381ba83d7d036267646398092e35beaf1fd9a34c18c2a1910c3fc20730f5731051650299467f39
+  languageName: node
+  linkType: hard
+
 "@nextui-org/dropdown@npm:2.1.17":
   version: 2.1.17
   resolution: "@nextui-org/dropdown@npm:2.1.17"
@@ -3164,6 +3180,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nextui-org/react-rsc-utils@npm:2.0.12":
+  version: 2.0.12
+  resolution: "@nextui-org/react-rsc-utils@npm:2.0.12"
+  checksum: 5cc5a9c86a6f0dc70ac72347a3fd5ffe760e138e2e1c4754d57e5744916c0692adeb92337798f37e525ca3fc183cac45ea3e3ab449f283e9ee7b44756dc1415a
+  languageName: node
+  linkType: hard
+
 "@nextui-org/react-utils@npm:2.0.10":
   version: 2.0.10
   resolution: "@nextui-org/react-utils@npm:2.0.10"
@@ -3307,6 +3330,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nextui-org/shared-utils@npm:2.0.5":
+  version: 2.0.5
+  resolution: "@nextui-org/shared-utils@npm:2.0.5"
+  checksum: 095f256b7bdac5af67f175264e98aec6d9f26bce9d4e1176f0b853bb4c85b6e5f6d169af1cf99aa02592278f9f3ff732e5b55a735e02f75539bad612cfdf7b11
+  languageName: node
+  linkType: hard
+
 "@nextui-org/skeleton@npm:2.0.24":
   version: 2.0.24
   resolution: "@nextui-org/skeleton@npm:2.0.24"
@@ -3431,6 +3461,19 @@ __metadata:
     react: ">=18"
     tailwind-variants: ">=0.1.13"
   checksum: 153ec2633cbb2afd5ceb6b9d1c9042707369e062fe348c1fcedf3ab91b69062bebb191e953f4da2f7e5b248e91727cc6e2f285e05f170679320f9cb24a37050a
+  languageName: node
+  linkType: hard
+
+"@nextui-org/system-rsc@npm:2.1.1":
+  version: 2.1.1
+  resolution: "@nextui-org/system-rsc@npm:2.1.1"
+  dependencies:
+    clsx: ^1.2.1
+  peerDependencies:
+    "@nextui-org/theme": ">=2.1.0"
+    react: ">=18"
+    tailwind-variants: ">=0.1.13"
+  checksum: 96b9b8c44a2999d565f4ad7fcfcd2d6bb8dd3bbe906a6470e614e6fa3a3cae8faa76db700c6dba0c4b9733601413b6d8b67262aadfcb3424f820780848c331fd
   languageName: node
   linkType: hard
 
@@ -7308,6 +7351,7 @@ __metadata:
     "@emotion/is-prop-valid": ^1.2.2
     "@fullhuman/postcss-purgecss": ^3.0.0
     "@next/bundle-analyzer": 14.1.4
+    "@nextui-org/divider": ^2.0.27
     "@nextui-org/react": ^2.2.10
     "@svgr/webpack": ^8.0.1
     "@tailwindcss/forms": ^0.5.7

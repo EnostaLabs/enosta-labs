@@ -1,20 +1,21 @@
-import { Authors, allAuthors } from 'contentlayer/generated'
-import { MDXLayoutRenderer } from 'pliny/mdx-components'
-import AuthorLayout from '@/layouts/AuthorLayout'
-import { coreContent } from 'pliny/utils/contentlayer'
 import { genPageMetadata } from 'app/seo'
-
+import OurStory from './_components/OurStory'
+import ApplicationArea from './_components/ApplicationArea'
+import { Divider } from '@nextui-org/divider'
+import Hero from './_components/Hero'
+import OurTeam from './_components/OurTeam'
 export const metadata = genPageMetadata({ title: 'About' })
 
 export default function Page() {
-  const author = allAuthors.find((p) => p.slug === 'default') as Authors
-  const mainContent = coreContent(author)
-
   return (
     <>
-      <AuthorLayout content={mainContent}>
-        <MDXLayoutRenderer code={author.body.code} />
-      </AuthorLayout>
+      <Hero />
+      <Divider />
+      <OurStory />
+      <Divider />
+      <ApplicationArea />
+      <Divider />
+      <OurTeam />
     </>
   )
 }

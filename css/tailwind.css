@@ -28,63 +28,8 @@ pre {
   scrollbar-width: none;
 }
 
-.wave {
-  animation-name: wave-animation; /* Refers to the name of your @keyframes element below */
-  animation-duration: 2.5s; /* Change to speed up or slow down */
-  animation-iteration-count: infinite; /* Never stop waving :) */
-  transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
-  display: inline-block;
-}
-
 * {
   -webkit-tap-highlight-color: transparent;
-}
-
-@keyframes wave-animation {
-  0% {
-    transform: rotate(0deg);
-  }
-  10% {
-    transform: rotate(14deg);
-  } /* The following five values can be played with to make the waving more or less extreme */
-  20% {
-    transform: rotate(-8deg);
-  }
-  30% {
-    transform: rotate(14deg);
-  }
-  40% {
-    transform: rotate(-4deg);
-  }
-  50% {
-    transform: rotate(10deg);
-  }
-  60% {
-    transform: rotate(0deg);
-  } /* Reset for the last half to pause */
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-.task-list-item::before {
-  @apply hidden;
-}
-
-.task-list-item {
-  @apply list-none;
-}
-
-.footnotes {
-  @apply mt-12 border-t border-gray-200 pt-8 dark:border-gray-700;
-}
-
-.data-footnote-backref {
-  @apply no-underline;
-}
-
-.csl-entry {
-  @apply my-5;
 }
 
 /* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
@@ -97,22 +42,6 @@ input:-webkit-autofill:focus {
 
 .katex-display {
   overflow: auto hidden;
-}
-
-.animation-hover:after {
-  background: none repeat scroll 0 0 transparent;
-  content: '';
-  height: 2px;
-  transition:
-    width 0.3s ease 0s,
-    left 0.3s ease 0s;
-  @apply absolute bottom-0 left-1/2 block w-0 bg-orange-500;
-}
-.animation-active:after {
-  @apply left-0 w-full;
-}
-.animation-hover:hover:after {
-  @apply left-0 w-full;
 }
 
 li.custom-list:before {
